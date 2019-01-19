@@ -1,0 +1,188 @@
+\documentclass[a4paper]{article}
+\usepackage[english, russian]{babel}                                   % Русский язык
+\usepackage[utf8]{inputenc}                                            % Кодировка
+\usepackage[left=1.5cm, right=1.5cm, top=3.5cm, bottom=2cm]{geometry}  % Отступы по краям
+\usepackage{indentfirst}                                               % 
+
+%============================================
+\newcommand{\OGEdate}{}
+\newcommand{\OGEvariant}{}
+%============================================
+
+% Настройка ссылок
+\usepackage[
+	unicode, pdftex, 
+	colorlinks=true, 
+	linkcolor=black, 
+	pdfhighlight=/P
+	]{hyperref} 
+
+% 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Вариант \OGEvariant}
+\lhead{ОГЭ от \OGEdate}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{hhline}
+\usepackage{listings}
+\usepackage{ifthen}
+\usepackage{xparse}
+
+\title{ОГЭ от \OGEdate}
+\author{Виногродский Серафим}
+
+\newcommand{\answer}[1]{
+    \expandafter\newcommand\csname answer\the\value{answers} \endcsname{#1}
+    Ответ: #1
+}
+\newcommand{\getanswer}[1]{
+    \csname answer#1 \endcsname
+}
+
+\newcommand{\issue}[1]{
+    \setcounter{answers}{#1}
+    \subsection{Номер #1}
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+
+\begin{document}
+    
+    \newcounter{answers}
+    \setcounter{answers}{1}
+    
+    % -------------------------------------
+    
+    \maketitle
+    \label{content}
+    \tableofcontents
+    \thispagestyle{empty}
+    \pagebreak
+    
+    % =====================================
+    
+    \section{Вариант \OGEvariant}
+    
+    \issue{1}
+    \answer{}
+    
+    \issue{2}
+    \answer{}
+    
+    \issue{3}
+    \answer{}
+    
+    \issue{4}
+    \answer{}
+    
+    \issue{5}
+    \answer{}
+    
+    \issue{6}
+    \answer{}
+    
+    \issue{7}
+    \answer{}
+    
+    \issue{8}
+    \answer{}
+    
+    \issue{9}
+    \answer{}
+    
+    \issue{10}
+    \answer{}
+    
+    \issue{11}
+    \answer{}
+    
+    \issue{12}
+    \answer{}
+    
+    \issue{13}
+    \answer{}
+    
+    \issue{14}
+    \answer{}
+    
+    \issue{15}
+    \answer{}
+    
+    \issue{16}
+    \answer{}
+    
+    \issue{17}
+    \answer{}
+    
+    \issue{18}
+    \answer{}
+    
+    \issue{19}
+    \answer{}
+    
+    \subsection{Номер 20.2}
+    \lstinputlisting[language=c++, basicstyle=\footnotesize, frame=LR]{20.2.cpp}
+    
+    % ========================================================
+    
+    \newcounter{forcounter}
+    
+    \NewDocumentCommand{\for}{m m O{1} m}
+    {%
+        \ifthenelse{#3 = 0}{}{%
+            \setcounter{forcounter}{#1}%
+            \ifthenelse{\value{forcounter} < #2}{%
+                #4%
+                \addtocounter{forcounter}{#3}%
+                \for{\value{forcounter}}{#2}[#3]{#4}%
+            }{}%
+        }%
+    } 
+        
+    \newcommand{\iterator}{\arabic{forcounter}}
+    
+    %---------------------------------------------------------
+
+    \pagebreak
+    \section{Таблица ответов}
+    
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|*{13}{c|}}
+            \hhline{|*{13}{-}|}
+            \for{1}{13}{\iterator & } 13
+            \\ \hhline{:*{13}{=}:}
+            \for{1}{13}{\getanswer{\iterator} & } \getanswer{13}
+            \\ \hhline{|*{13}{-}|}
+        \end{tabular}
+    \end{table}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|*{6}{c|}}
+            \hhline{|*{6}{-}|}
+            14 & 15 & 16 & 17 & 18 & 19  \\ \hhline{*{6}{=}}
+            \getanswer{14} & 
+            \getanswer{15} & 
+            \getanswer{16} & 
+            \getanswer{17} & 
+            \getanswer{18} & 
+            \getanswer{19} \\ \hhline{|*{6}{-}|}
+        \end{tabular}
+    \end{table}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|c|}
+            \hline
+            \hyperref[content]{К содержанию (стр. \pageref{content})} \\
+            \hline  
+        \end{tabular}
+    \end{table}
+
+    
+	
+\end{document}

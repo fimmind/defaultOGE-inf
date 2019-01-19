@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.gz
+*.zip
+*.toc
+*.out
+*.exe
+Solution.pdf
