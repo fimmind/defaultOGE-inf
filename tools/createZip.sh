@@ -1,11 +1,17 @@
 #!/bin/bash
 
 xls="19.xls"
-exe="20.2.cpp"
+exe="20.2.exe"
 solution="Solution.pdf"
 task="Task.pdf"
 
 cd ..
+
+dir=$(pwd)
+
+cd ..
+rm inf.zip
+cd "$dir"
 
 if [ ! -f $xls ]; then
 	echo "$xls not found"
