@@ -6,9 +6,7 @@ solution="Solution.pdf"
 task="Task.pdf"
 
 cd ..
-
 dir=$(pwd)
-
 cd ..
 rm inf.zip
 cd "$dir"
