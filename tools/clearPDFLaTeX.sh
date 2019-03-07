@@ -2,8 +2,5 @@
 
 cd ..
 
-rm *.log
-rm *.aux
-rm *.out
-rm *.toc
+latexmk -c
 rm *.synctex.gz

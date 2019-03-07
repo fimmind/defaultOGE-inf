@@ -1,24 +1,19 @@
 #!/bin/bash
 
 xls="19.xls"
-exe="20.2.exe"
 solution="Solution.pdf"
 task="Task.pdf"
 
 cd ..
 dir=$(pwd)
 cd ..
-rm inf.zip
+if [ -f inf.zip ]; then
+  rm inf.zip
+fi
 cd "$dir"
 
 if [ ! -f $xls ]; then
 	echo "$xls not found"
-	read -n 1
-	exit
-fi
-
-if [ ! -f $exe ]; then
-	echo "$exe not found"
 	read -n 1
 	exit
 fi
@@ -35,5 +30,4 @@ if [ ! -f $task ]; then
 	exit
 fi
 
-zip "inf.zip" $exe $xls $solution $task
-mv inf.zip ..
+zip "inf.zip" $xls $solution $task
