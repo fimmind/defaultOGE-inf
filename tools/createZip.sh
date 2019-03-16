@@ -3,6 +3,7 @@
 xls="19.xls"
 solution="Solution.pdf"
 task="Task.pdf"
+png="20.2.png"
 
 cd ..
 dir=$(pwd)
@@ -30,4 +31,10 @@ if [ ! -f $task ]; then
 	exit
 fi
 
-zip "inf.zip" $xls $solution $task
+if [ ! f $png ]; then
+  echo "$png not found"
+  read -n 1
+  exit
+fi
+
+zip "inf.zip" $xls $solution $task $png
